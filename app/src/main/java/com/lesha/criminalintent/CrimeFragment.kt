@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import com.lesha.criminalintent.databinding.FragmentCrimeBinding
 
 class CrimeFragment: Fragment() {
+    private lateinit var binding: FragmentCrimeBinding
 
     private lateinit var crime: Crime
     private lateinit var titleField: EditText
@@ -29,14 +30,14 @@ class CrimeFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentCrimeBinding.inflate(inflater,container,false)
+        binding = FragmentCrimeBinding.inflate(inflater,container,false)
         titleField = binding.crimeTitle
         dateButton = binding.crimeDate.apply {
             text = crime.date.toString()
             isEnabled = false
         }
         solvedCheckBox = binding.crimeSolved
-        return binding.root
+        return binding.root.rootView
     }
 
     override fun onStart() {

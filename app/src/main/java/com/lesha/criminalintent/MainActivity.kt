@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fragmentContainer.id)
         if (currentFragment == null){
-            val fragment = CrimeFragment()
+            val fragment = CrimeListFragment.newInstance()
             supportFragmentManager
                 .beginTransaction()
                 .add(binding.fragmentContainer.id,fragment)
@@ -23,3 +23,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
