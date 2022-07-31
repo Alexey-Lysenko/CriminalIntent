@@ -1,7 +1,7 @@
 package com.lesha.criminalintent
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.lesha.criminalintent.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -10,15 +10,15 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater).also {setContentView(it.root) }
+        binding = ActivityMainBinding.inflate(layoutInflater).also { setContentView(it.root) }
 
 
         val currentFragment = supportFragmentManager.findFragmentById(binding.fragmentContainer.id)
-        if (currentFragment == null){
+        if (currentFragment == null) {
             val fragment = CrimeListFragment.newInstance()
             supportFragmentManager
                 .beginTransaction()
-                .add(binding.fragmentContainer.id,fragment)
+                .add(binding.fragmentContainer.id, fragment)
                 .commit()
         }
     }
