@@ -8,3 +8,5 @@ data class Crime(
     var date: Date = Date(),
     var isSolved: Boolean = false
 )
+
+
