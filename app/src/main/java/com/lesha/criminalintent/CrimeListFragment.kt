@@ -29,8 +29,19 @@ class CrimeListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCrimeListBinding.inflate(inflater, container, false)
-        updateUI()
+        binding.crimeRecyclerView.adapter = CrimeAdapter(emptyList())
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        crimeListViewModel.crimeListLiveData.observe(
+            viewLifecycleOwner
+        ) { crimes ->
+            crimes?.let {
+                updateUI(crimes)
+            }
+        }
     }
 
     private inner class CrimeHolder(binding: ListItemCrimeBinding) :
@@ -56,6 +67,7 @@ class CrimeListFragment : Fragment() {
                 View.GONE
             }
         }
+
         override fun onClick(p0: View?) {
             Toast.makeText(context, "${crime.title}!", Toast.LENGTH_SHORT).show()
         }
@@ -80,8 +92,8 @@ class CrimeListFragment : Fragment() {
         }
     }
 
-    private fun updateUI() {
-        binding.crimeRecyclerView.adapter = CrimeAdapter(crimeListViewModel.crimes)
+    private fun updateUI(crimes: List<Crime>) {
+        binding.crimeRecyclerView.adapter = CrimeAdapter(crimes)
     }
 
     companion object {
