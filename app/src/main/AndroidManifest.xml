@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lesha.criminalintent">
-
     <application
         android:name=".CriminalIntentApplication"
         android:allowBackup="true"
@@ -24,5 +23,4 @@
             </intent-filter>
         </activity>
     </application>
-
 </manifest>
