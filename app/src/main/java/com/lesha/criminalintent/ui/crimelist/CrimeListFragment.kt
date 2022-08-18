@@ -1,4 +1,4 @@
-package com.lesha.criminalintent
+package com.lesha.criminalintent.ui.crimelist
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,10 +11,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.lesha.criminalintent.data.model.Crime
 import com.lesha.criminalintent.databinding.FragmentCrimeListBinding
 import com.lesha.criminalintent.databinding.ListItemCrimeBinding
 import java.text.SimpleDateFormat
 import java.util.*
+import com.lesha.criminalintent.ui.DateConstants
 
 
 class CrimeListFragment : Fragment() {
@@ -32,6 +34,7 @@ class CrimeListFragment : Fragment() {
         super.onAttach(context)
         callbacks = context as Callbacks?
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,7 +60,6 @@ class CrimeListFragment : Fragment() {
         super.onDetach()
         callbacks = null
     }
-
 
 
     private inner class CrimeHolder(binding: ListItemCrimeBinding) :

@@ -1,4 +1,4 @@
-package com.lesha.criminalintent
+package com.lesha.criminalintent.ui.crimedetails
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -13,7 +13,9 @@ import android.widget.EditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.lesha.criminalintent.data.model.Crime
 import com.lesha.criminalintent.databinding.FragmentCrimeBinding
+import com.lesha.criminalintent.ui.DateConstants
 import java.text.SimpleDateFormat
 import java.util.*
 

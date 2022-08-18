@@ -1,9 +1,10 @@
-package com.lesha.criminalintent
+package com.lesha.criminalintent.data.repository
 
 import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.room.Room
-import com.lesha.criminalintent.database.CrimeDatabase
+import com.lesha.criminalintent.data.model.Crime
+import com.lesha.criminalintent.data.database.CrimeDatabase
 import java.util.*
 import java.util.concurrent.Executors
 
@@ -25,7 +26,7 @@ class CrimeRepository private constructor(context: Context) {
 
     fun getCrime(id: UUID): LiveData<Crime?> = crimeDao.getCrime(id)
 
-    fun updateCrime(crime:Crime){
+    fun updateCrime(crime: Crime){
         executor.execute{
             crimeDao.updateCrime(crime)
         }

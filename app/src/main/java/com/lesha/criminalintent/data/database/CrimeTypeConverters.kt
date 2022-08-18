@@ -1,4 +1,4 @@
-package com.lesha.criminalintent.database
+package com.lesha.criminalintent.data.database
 
 import androidx.room.TypeConverter
 import java.util.*

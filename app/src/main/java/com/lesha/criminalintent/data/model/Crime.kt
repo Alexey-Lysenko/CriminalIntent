@@ -1,4 +1,4 @@
-package com.lesha.criminalintent
+package com.lesha.criminalintent.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
