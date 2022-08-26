@@ -12,17 +12,18 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.lesha.criminalintent.data.model.Crime
+import com.lesha.criminalintent.databinding.CrimeListItemBinding
 import com.lesha.criminalintent.databinding.FragmentCrimeListBinding
-import com.lesha.criminalintent.databinding.ListItemCrimeBinding
+import com.lesha.criminalintent.ui.OutputPatterns
 import java.text.SimpleDateFormat
 import java.util.*
-import com.lesha.criminalintent.ui.DateConstants
 
 
 class CrimeListFragment : Fragment() {
-    interface Callbacks{
+    interface Callbacks {
         fun onCrimeSelected(crimeId: UUID)
     }
+
     private var callbacks: Callbacks? = null
 
     private lateinit var binding: FragmentCrimeListBinding
@@ -62,7 +63,7 @@ class CrimeListFragment : Fragment() {
     }
 
 
-    private inner class CrimeHolder(binding: ListItemCrimeBinding) :
+    private inner class CrimeHolder(binding: CrimeListItemBinding) :
         RecyclerView.ViewHolder(binding.root), View.OnClickListener {
         private lateinit var crime: Crime
         val titleTextView: TextView = itemView.findViewById(binding.crimeTitle.id)
@@ -77,7 +78,7 @@ class CrimeListFragment : Fragment() {
         fun bind(crime: Crime) {
             this.crime = crime
             titleTextView.text = this.crime.title
-            dateTextView.text = SimpleDateFormat(DateConstants.FORMAT_PATTERN).format(this.crime.date)
+            dateTextView.text = SimpleDateFormat(OutputPatterns.DATE_FORMAT_PATTERN).format(this.crime.date)
             solvedImageView.visibility = if (crime.isSolved) {
                 View.VISIBLE
             } else {
@@ -94,7 +95,7 @@ class CrimeListFragment : Fragment() {
         RecyclerView.Adapter<CrimeHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
             return CrimeHolder(
-                ListItemCrimeBinding.inflate(
+                CrimeListItemBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false

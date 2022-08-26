@@ -14,12 +14,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.lesha.criminalintent.data.model.Crime
-import com.lesha.criminalintent.databinding.FragmentCrimeBinding
-import com.lesha.criminalintent.ui.DateConstants
+import com.lesha.criminalintent.databinding.FragmentCrimeDetailsBinding
+import com.lesha.criminalintent.ui.OutputPatterns
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CrimeFragment : Fragment() {
+class CrimeDetailFragment : Fragment() {
 
     private lateinit var crime: Crime
     private lateinit var titleField: EditText
@@ -41,10 +41,10 @@ class CrimeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val binding = FragmentCrimeBinding.inflate(inflater, container, false)
+        val binding = FragmentCrimeDetailsBinding.inflate(inflater, container, false)
         titleField = binding.crimeTitle
         dateButton = binding.crimeDate.apply {
-            text = SimpleDateFormat(DateConstants.FORMAT_PATTERN).format(binding.crimeDate.id)
+            text = SimpleDateFormat(OutputPatterns.DATE_FORMAT_PATTERN).format(binding.crimeDate.id)
             isEnabled = false
         }
         solvedCheckBox = binding.crimeSolved
@@ -90,8 +90,8 @@ class CrimeFragment : Fragment() {
     @SuppressLint("SimpleDateFormat")
     private fun updateUI() {
         titleField.setText(crime.title)
-        dateButton.text = SimpleDateFormat(DateConstants.FORMAT_PATTERN).format(crime.date)
-        solvedCheckBox.apply{
+        dateButton.text = SimpleDateFormat(OutputPatterns.DATE_FORMAT_PATTERN).format(crime.date)
+        solvedCheckBox.apply {
             isChecked = crime.isSolved
             jumpDrawablesToCurrentState()
         }
@@ -100,11 +100,11 @@ class CrimeFragment : Fragment() {
     companion object {
         const val ARG_CRIME_ID = "crime_id"
 
-        fun newInstance(crimeId: UUID): CrimeFragment {
+        fun newInstance(crimeId: UUID): CrimeDetailFragment {
             val args = Bundle().apply {
                 putSerializable(ARG_CRIME_ID, crimeId)
             }
-            return CrimeFragment().apply { arguments = args }
+            return CrimeDetailFragment().apply { arguments = args }
         }
     }
 

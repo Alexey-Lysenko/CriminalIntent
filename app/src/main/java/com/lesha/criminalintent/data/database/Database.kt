@@ -6,9 +6,9 @@ import androidx.room.TypeConverters
 import com.lesha.criminalintent.data.model.Crime
 
 @Database(entities = [Crime::class], version = 1)
-@TypeConverters(CrimeTypeConverters::class)
-abstract class CrimeDatabase : RoomDatabase() {
-    abstract fun crimeDao(): CrimeDao
+@TypeConverters(TypeConverter::class)
+abstract class Database : RoomDatabase() {
+    abstract fun crimeDao(): Dao
 
 }
 

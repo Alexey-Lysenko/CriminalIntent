@@ -3,7 +3,7 @@ package com.lesha.criminalintent.ui.activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.lesha.criminalintent.databinding.ActivityMainBinding
-import com.lesha.criminalintent.ui.crimedetails.CrimeFragment
+import com.lesha.criminalintent.ui.crimedetails.CrimeDetailFragment
 import com.lesha.criminalintent.ui.crimelist.CrimeListFragment
 import java.util.*
 
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), CrimeListFragment.Callbacks {
     }
 
     override fun onCrimeSelected(crimeId: UUID) {
-        val fragment = CrimeFragment.newInstance(crimeId)
+        val fragment = CrimeDetailFragment.newInstance(crimeId)
         supportFragmentManager.beginTransaction().also {
             it.replace(binding.fragmentContainer.id, fragment)
             it.addToBackStack(null)

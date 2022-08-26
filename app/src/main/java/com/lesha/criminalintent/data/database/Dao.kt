@@ -9,7 +9,7 @@ import com.lesha.criminalintent.data.model.Crime
 import java.util.*
 
 @Dao
-interface CrimeDao {
+interface Dao {
 
     @Query("SELECT * FROM crime")
     fun getCrimes(): LiveData<List<Crime>>

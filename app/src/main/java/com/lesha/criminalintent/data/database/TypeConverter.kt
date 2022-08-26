@@ -3,7 +3,7 @@ package com.lesha.criminalintent.data.database
 import androidx.room.TypeConverter
 import java.util.*
 
-class CrimeTypeConverters {
+class TypeConverter {
     @TypeConverter
     fun fromDate(date: Date?): Long? {
         return date?.time

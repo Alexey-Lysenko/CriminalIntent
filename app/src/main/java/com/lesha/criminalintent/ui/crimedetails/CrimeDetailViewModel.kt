@@ -5,15 +5,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.lesha.criminalintent.data.model.Crime
-import com.lesha.criminalintent.data.repository.*
+import com.lesha.criminalintent.data.repository.Repository
 import java.util.*
 
 class CrimeDetailViewModel : ViewModel() {
-    private val crimeRepository = CrimeRepository.get()
+    private val repository = Repository.get()
     private val crimeIdLiveData = MutableLiveData<UUID>()
 
     var crimeLiveData: LiveData<Crime?> = Transformations.switchMap(crimeIdLiveData) { crimeId ->
-        crimeRepository.getCrime(crimeId)
+        repository.getCrime(crimeId)
     }
 
     fun loadCrime(crimeId: UUID) {
@@ -21,6 +21,6 @@ class CrimeDetailViewModel : ViewModel() {
     }
 
     fun saveCrime(crime: Crime) {
-        crimeRepository.updateCrime(crime)
+        repository.updateCrime(crime)
     }
 }
