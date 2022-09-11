@@ -1,11 +1,11 @@
 package com.lesha.criminalintent.application
 
 import android.app.Application
-import com.lesha.criminalintent.data.repository.Repository
+import com.lesha.criminalintent.data.repository.CrimeRepositoryImpl
 
 class Application : Application() {
     override fun onCreate() {
         super.onCreate()
-        Repository.initialize(this)
+        CrimeRepositoryImpl.initialize(this)
     }
 }

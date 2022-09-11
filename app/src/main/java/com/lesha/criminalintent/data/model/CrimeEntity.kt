@@ -4,12 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.util.*
 
-@Entity
-data class Crime(
+@Entity(tableName = "crime_entity")
+data class CrimeEntity(
     @PrimaryKey val id: UUID = UUID.randomUUID(),
-    var title: String = "",
-    var date: Date = Date(),
+    val title: String = "",
+    val date: Date = Date(),
     var isSolved: Boolean = false
 )
-
-
