@@ -12,6 +12,7 @@ CriminalIntent - it's application for office workers that acts as a book of comp
 
 - ViewModel
 - Fragments navigation
+- RecyclerView
 - ViewModel
 - ViewBinding
 - Room library
